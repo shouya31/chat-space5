@@ -9,6 +9,11 @@
            	font-size: 20px;
 			font-weight: bold;
 			color: #FFFFFF  } 
+
+			&-icon  {
+					display: inline;
+					float: right;
+}
 		}
 	&_group { background-color: #2f3e51;
 	           height: 100%;
@@ -32,15 +37,14 @@
     
 }
 
-.chat-icon  {
-	display: inline;
-	float: right;
+
+
 }
+
 .fa-pencil-square-o {
 	color: #FFF;
 	display: inline;
 }
 .fa-cog {
 	color: #FFF;
-}
 }
