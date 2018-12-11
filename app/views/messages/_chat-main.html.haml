@@ -21,3 +21,14 @@
     .chat-main_message-body
       あはははははは
       %p.lower-message__content
+
+.chat-footer
+  = form_for @test do |f|
+    = f.text_field :name, class: "message"
+    .form__mask
+      = f.label :image, class: 'form__mask__image' do
+        = fa_icon 'picture-o', class: 'icon'
+        = f.file_field :image, class: 'hidden'
+    = f.submit 'Send', class: 'submit'
+
+    
