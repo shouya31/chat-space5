@@ -13,10 +13,10 @@
             = fa_icon 'cog', class: 'icon'  
   .chat-side_group
     .chat-side_group-main
-      
-      .chat-side_group-main-link
-        .chat-side_group-main-name
-          株式会社div
-        .chat-side_group-main-message
-          nothing
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .chat-side_group-main-name
+            = group.name
+          .chat-side_group-main-message
+            nothing
           
