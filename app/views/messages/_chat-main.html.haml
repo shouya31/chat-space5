@@ -1,0 +1,32 @@
+.chat-main_header
+  .chat-main_header--group
+    %a.chat-main__header--group-edit-btn{:href => "/users/:id/edit"}
+      edit
+    .chat-main_header--group-name
+      株式会社div
+
+    .chat-main_header-members
+      "
+      MEMBER
+      "
+      seo
+
+      樋口カンパニー
+  .messages
+    .upper-message
+      .chat-main_message-name
+        shouya
+        .chat-main_message-time
+          2089/12/43/15:34:22
+    .chat-main_message-body
+      あはははははは
+      %p.lower-message__content
+
+.chat-footer
+  = form_for @test do |f|
+    = f.text_field :name, class: "message"
+    .form__mask
+      = f.label :image, class: 'form__mask__image' do
+        = fa_icon 'picture-o', class: 'icon'
+        = f.file_field :image, class: 'hidden'
+    = f.submit 'Send', class: 'submit'
