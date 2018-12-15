@@ -28,9 +28,9 @@ $(function() {
       contentType: false
     })
     .done(function(data){
-    var html = buildHTML(data);
-    $('.messages').append(html)
-    $('.message').val('')
+      var html = buildHTML(data);
+      $('.messages').append(html)
+      $('.message').val('')
     })
     .fail(function(){
       alert('error');
