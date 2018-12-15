@@ -16,7 +16,6 @@ $(function() {
   }
 
   $('#new_message').on('submit', function(e){
-    console.log(1111)
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -27,9 +26,8 @@ $(function() {
       dataType: 'json',
       processData: false,
       contentType: false
-     })
+    })
     .done(function(data){
-      console.log(data)
     var html = buildHTML(data);
     $('.messages').append(html)
     $('.message').val('')
