@@ -5,13 +5,13 @@ $(function() {
       addImage = `<img src="${message.image.url}" class="form__mask__image">`;
     }
     var html =  `
-    <div class="messages">
-      <div class="upper-message">
-        <div class="chat-main_message-name">${message.user_name}</div>
-        <div class="chat-main_message-time">${message.time}</div>
-      </div>
-      <div class="chat-main_message-body">${message.content}${addImage}</div>
-    </div>`;
+      <div class="messages">
+        <div class="upper-message">
+          <div class="chat-main_message-name">${message.user_name}</div>
+          <div class="chat-main_message-time">${message.time}</div>
+        </div>
+        <div class="chat-main_message-body">${message.content}${addImage}</div>
+      </div>`;
     return html;
   }
 
@@ -57,7 +57,6 @@ $(function() {
         } else {
           return false
         }
-
         $.ajax({
           url: location.href,
           type: 'GET',
@@ -65,14 +64,14 @@ $(function() {
           dataType: 'json'
         })
         .done(function(data){
-          
           $.each(data, function(i, data){
             buildMESSAGE(message)
           });
-        }
+        })
         .fail(function(){
           alert('自動更新に失敗しました')
-        })
+        });
     }
   }
-});
+ })
+});  
