@@ -1,4 +1,4 @@
-.upper-message
+.upper-message{ 'data-message-id': message.id}
   .chat-main_message-name
     = message.user.name 
   .chat-main_message-time
@@ -8,3 +8,5 @@
       %p.lower-message__content
         = message.content
     = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+ 
+
