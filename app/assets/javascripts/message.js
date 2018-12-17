@@ -36,4 +36,37 @@ $(function() {
       alert('error');
     })
   })
-})
+
+   $(function() {
+    $(function() {
+      if (location.pathname.match(/\/groups\/\d+\/messages/)) {
+        setInterval(update, 5000);
+      }
+    });
+    function update(){
+      if($('.messages')[0]){
+        var message_id = $('.messages:last').data('message-id');
+      } else {
+        return false
+      }
+
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { id : message_id },
+        dataType: 'json'
+      })
+      .done(function(data){
+        if (data.length){
+        $.each(data, function(i, data){
+          var html = buildHTML(data);
+          $('.upper-message').append(html)
+        })
+      }
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました')
+      })
+    }
+  })
+});
