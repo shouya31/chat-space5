@@ -3,15 +3,12 @@
     %a.chat-main__header--group-edit-btn{:href => "/users/:id/edit"}
       edit
     .chat-main_header--group-name
-      株式会社div
+      = @group.name
 
     .chat-main_header-members
-      "
-      MEMBER
-      "
-      seo
-
-      樋口カンパニー
+      %p
+        Members:
+        = current_user.name
       
 .chat-footer
   = form_for [@group, @message] do |f|
