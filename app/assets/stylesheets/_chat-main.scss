@@ -6,6 +6,8 @@
     	padding: 35px 0 10px 0;
 		border: 1px solid;
 		color: #eeeeee;
+		margin-left: 300px;
+        width: 1140px;
     }
     &_header--group-name {
     	font-size: 20px;
@@ -77,6 +79,7 @@
      bottom: 0px;
      width: 1140px;
      position: fixed;
+     margin-left: 300px; 
 }
 
 .messages {
