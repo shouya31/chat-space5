@@ -1,17 +1,16 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   function buildHTML(message){
     var addImage = '';
     if (message.image.url) {
       addImage = `<img src="${message.image.url}" class="form__mask__image">`;
     }
     var html =  `
-      <div class="messages">
         <div class="upper-message">
           <div class="chat-main_message-name">${message.user_name}</div>
           <div class="chat-main_message-time">${message.time}</div>
         </div>
         <div class="chat-main_message-body">${message.content}${addImage}</div>
-      </div>`;
+      `;
     return html;
   }
 
@@ -31,6 +30,8 @@ $(function() {
       var html = buildHTML(data);
       $('.messages').append(html)
       $('.message').val('')
+      $('.submit').attr("disabled",false);
+      $('.messages').animate({scrollTop: 100000}, 500, 'swing');
     })
     .fail(function(){
       alert('error');
@@ -40,13 +41,12 @@ $(function() {
   $(function() {
     function buildMESSAGE(message) {
       var messages = `
-      <div class="messages">
         <div class="upper-message">
           <div class="chat-main_message-name">${message.user_name}</div>
           <div class="chat-main_message-time">${message.time}</div>
         </div>
         <div class="chat-main_message-body">${message.content}${addImage}</div>
-      </div>`;
+      `;
     return html;
     $(function() {      
         setInterval(update, 1000);
@@ -74,4 +74,4 @@ $(function() {
     }
   }
  })
-});  
+ }); 

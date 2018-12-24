@@ -1,14 +1,16 @@
 .chat-main_header
   .chat-main_header--group
-    %a.chat-main__header--group-edit-btn{:href => "/users/:id/edit"}
-      edit
+    %a.chat-main__header--group-edit-btn{:href => "/groups/#{params[:group_id]}/edit"}
+      Edit
     .chat-main_header--group-name
       = @group.name
 
     .chat-main_header-members
       %p
         Members:
-        = current_user.name
+        = @users.pluck(:name).join(",")
+.messages
+  = render @messages
       
 .chat-footer
   = form_for [@group, @message] do |f|
@@ -17,4 +19,4 @@
       = f.label :image, class: 'form__mask__image' do
         = fa_icon 'picture-o', class: 'icon'
         = f.file_field :image, class: 'hidden'
-    = f.submit 'Send', class: 'submit'
+        = f.submit 'Send', class: 'submit'
