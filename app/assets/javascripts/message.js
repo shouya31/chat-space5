@@ -38,40 +38,30 @@ $(document).on('turbolinks:load', function() {
     })
   })
 
-  $(function() {
-    function buildMESSAGE(message) {
-      var messages = `
-        <div class="upper-message">
-          <div class="chat-main_message-name">${message.user_name}</div>
-          <div class="chat-main_message-time">${message.time}</div>
-        </div>
-        <div class="chat-main_message-body">${message.content}${addImage}</div>
-      `;
-    return html;
-    $(function() {      
-        setInterval(update, 1000);
-    });
-      function update(){
-        if($('.upper-message')[0]){
-          var message_id = $('.upper-message:last').data('message-id');
-        } else {
-          return false
-        }
-        $.ajax({
-          url: location.href,
-          type: 'GET',
-          data: { id : message_id },
-          dataType: 'json'
-        })
-        .done(function(data){
-          $.each(data, function(i, data){
-            buildMESSAGE(message)
-          });
-        })
-        .fail(function(){
-          alert('自動更新に失敗しました')
+    function update(){
+      if($('.upper-message')[0]){
+        var message_id = $('.upper-message:last').data('message-id');
+      } else {
+        return false
+      }
+      $.ajax({
+        url: location.href,
+        type: 'GET',
+        data: { id : message_id },
+        dataType: 'json'
+      })
+      .done(function(data){
+        $.each(data, function(i, message){
+          var html = buildHTML(data);
+          $('.messages').append(html)
         });
+      })
+      .fail(function(){
+        alert('自動更新に失敗しました')
+      });
     }
-  }
- })
+    // $(function() {      
+    //     setInterval(update, 5000);
+    // });
+    
  }); 
